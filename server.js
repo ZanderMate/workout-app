@@ -13,10 +13,15 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost/workout', {
+mongoose.set('bufferCommands', false);
+
+mongoose.connect('mongodb://localhost/workouts', {
   useNewUrlParser: true,
   useUnifiedTopology: true
-});
+})
+
+// Import routes and give the server access to them.
+require("./controllers/workout-controllers")(app);
 
 app.listen(PORT, () => {
     console.log("App running on port" , PORT);
