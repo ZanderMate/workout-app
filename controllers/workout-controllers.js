@@ -18,19 +18,32 @@ module.exports = function (app) {
         res.sendFile(path.join(__dirname, "../public/stats.html"));
     });
 
-    // app.post("/api/workouts", function(req, res) {
-    //     db.Workout.create({
-
-    //     })
-    // })
+    app.post("/api/workouts", function (req, res) {
+        db.Workout.create()
+            .then(result => {
+                res.json(result);
+            })
+    })
 
     app.get("/api/workouts", function (req, res) {
         db.Workout.find()
             .then(result => {
                 res.json(result);
-                console.log(result);
             })
     })
 
-    // app.put
+    app.put("/api/workouts/:id", function (req, res) {
+        db.Workout.findByIdAndUpdate(
+            req.params.id
+        ).then(result => {
+            res.json(result);
+        })
+    })
+
+    app.get("/api/workouts/range", function (req, res) {
+        db.Workout.find().limit(7)
+            .then(result => {
+                res.json(result);
+            })
+    })
 }
