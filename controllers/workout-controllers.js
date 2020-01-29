@@ -1,6 +1,4 @@
-// var express = require("express");
 var path = require("path");
-// var router = express.Router();
 // Import the models to use its database functions.
 var db = require("../models");
 
@@ -19,7 +17,7 @@ module.exports = function (app) {
     });
 
     app.post("/api/workouts", function (req, res) {
-        db.Workout.create()
+        db.Workout.create(req.body)
             .then(result => {
                 res.json(result);
             })
@@ -33,8 +31,18 @@ module.exports = function (app) {
     })
 
     app.put("/api/workouts/:id", function (req, res) {
-        db.Workout.findByIdAndUpdate(
-            req.params.id
+        let workoutData = {
+            "type": req.body.type,
+            "name": req.body.name,
+            "duration": req.body.duration,
+            "weigh": req.body.weight,
+            "reps": req.body.reps,
+            "sets": req.body.sets,
+            "distance": req.body.distance
+    };
+        console.log(workoutData);
+        db.Workout.findOneAndUpdate({ _id: req.params.id },
+            { $push: { exercises: workoutData } }
         ).then(result => {
             res.json(result);
         })
