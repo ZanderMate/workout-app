@@ -35,7 +35,7 @@ module.exports = function (app) {
             "type": req.body.type,
             "name": req.body.name,
             "duration": req.body.duration,
-            "weigh": req.body.weight,
+            "weight": req.body.weight,
             "reps": req.body.reps,
             "sets": req.body.sets,
             "distance": req.body.distance
