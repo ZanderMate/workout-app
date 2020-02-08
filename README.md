@@ -16,6 +16,7 @@ This application uses user input to create workout for each day. The information
 * ES6+
 * Express.js
 * Mongoose.js
+* Service-Worker
 
 ## Instructions
 
@@ -36,6 +37,8 @@ This application uses user input to create workout for each day. The information
 5. To look at the stats for the last 7 days, click on the 'Fitness Tracker Dashboard' in the upper left hand corner of the page. There, you should be able to see a pie chart showing duration of workouts in minutes and a bar chart showing the pounds lifted.
 
 ![image](https://user-images.githubusercontent.com/54219054/73421801-aec3bd00-42ec-11ea-9dcf-e0158354979c.png)
+
+6. Should be able to see root page without being connected online due to the service worker.
 
 ## Demo
 
